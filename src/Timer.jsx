@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FiPlay, FiPause} from "react-icons/fi";
+import { FiPlay, FiPause } from "react-icons/fi";
 import { MdOutlineReplay } from "react-icons/md";
 
 function Timer() {
@@ -33,10 +33,11 @@ function Timer() {
 
       tick();
 
-      if (secondsLeftRef.current === 0){
-        console.log("acabou!")
-        clearInterval(interval)
+      if (secondsLeftRef.current === 0) {
+        console.log("acabou!");
+        clearInterval(interval);
       }
+      
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -46,36 +47,34 @@ function Timer() {
   if (seconds < 10) seconds = "0" + seconds;
 
   return (
-    <div className="flex">
-      <div className="flex justify-center content-center w-40 rounded-lg text-white p-2">
-        <p className="p-2 px-2 text-xl text-white">
-          {minutes}:{seconds}
-        </p>
-        {isPaused ? (
-          <button
-            className="p-2  px-2 text-white"
-            onClick={() => {
-              setIsPaused(!isPaused);
-              isPausedRef.current = !isPaused;
-            }}
-          >
-            <FiPlay className="h-6 w-6 text-white" />
-          </button>
-        ) : (
-          <button
-            className="p-2 px-2 text-white"
-            onClick={() => {
-              setIsPaused(!isPaused);
-              isPausedRef.current = !isPaused;
-            }}
-          >
-            <FiPause className="h-6 w-6 text-white" />
-          </button>
-        )}
-        <button className="text-white" onClick={restart}>
-          <MdOutlineReplay className="h-6 w-6 text-white" />
+    <div className="flex justify-center content-center rounded-lg text-white p-8">
+      <p className="text-6xl text-white">
+        {minutes}:{seconds}
+      </p>
+      {isPaused ? (
+        <button
+          className="p-2 px-2 pl-6 text-white"
+          onClick={() => {
+            setIsPaused(!isPaused);
+            isPausedRef.current = !isPaused;
+          }}
+        >
+          <FiPlay className="h-8 w-8 text-white" />
         </button>
-      </div>
+      ) : (
+        <button
+          className="p-2 px-2 pl-6 text-white"
+          onClick={() => {
+            setIsPaused(!isPaused);
+            isPausedRef.current = !isPaused;
+          }}
+        >
+          <FiPause className="h-8 w-8 text-white" />
+        </button>
+      )}
+      <button className="text-white" onClick={restart}>
+        <MdOutlineReplay className="h-8 w-8 text-white" />
+      </button>
     </div>
   );
 }
