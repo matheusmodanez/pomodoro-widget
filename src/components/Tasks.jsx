@@ -4,13 +4,15 @@ import { MdOutlineAddBox, MdDone, MdOutlineClose } from "react-icons/md";
 function Task({ task, index, completeTask, removeTask }) {
   return (
     <div className="flex content-center justify-between mt-6">
-      <p className={task.isDone ? "text-emerald-600" : " text-stone-200"}>{task.text}</p>
+      <p className={task.isDone ? "text-emerald-600" : " text-stone-200"}>
+        {task.text}
+      </p>
       <div className="flex content-center justify-center mx-2 text-lg">
         <button onClick={() => completeTask(index)}>
-          <MdDone className="mx-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-120 hover:text-emerald-600 duration-300"/>
-        </button>{" "}
+          <MdDone className="mx-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-120 hover:text-emerald-600 duration-300" />
+        </button>
         <button onClick={() => removeTask(index)}>
-          <MdOutlineClose className="mx-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-120 hover:text-red-600 duration-300"/>
+          <MdOutlineClose className="mx-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-120 hover:text-red-600 duration-300" />
         </button>
       </div>
     </div>
@@ -26,6 +28,7 @@ function AddTask({ addTask }) {
     addTask(value);
     setValue("");
   };
+  
   return (
     <form
       onSubmit={handleSubmit}
@@ -46,11 +49,11 @@ function AddTask({ addTask }) {
 }
 
 function Tasks() {
-  const [task, setTask] = useState([{ text: "", isDone: false }]);
+  const [task, setTask] = useState([]);
 
   const addTask = (text) => {
     const tasks = [...task, { text }];
-    setTask(tasks);
+    setTask(tasks)
   };
 
   const completeTask = (index) => {

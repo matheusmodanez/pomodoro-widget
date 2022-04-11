@@ -11,14 +11,9 @@ function Timer() {
   const secondsLeftRef = useRef(secondsLeft);
   const isPausedRef = useRef(isPaused);
 
-  function tick() {
-    secondsLeftRef.current--;
-    setSecondsLeft(secondsLeftRef.current);
-  }
-
   function restart() {
-    clearInterval(secondsLeftRef.current);
     setSecondsLeft(1500);
+    clearInterval(secondsLeftRef.current);
   }
 
   //useEffect: The useEffect Hook allows you to perform side effects in your components. Some examples of side effects are: fetching data, directly updating the DOM, and timers.
@@ -26,21 +21,22 @@ function Timer() {
     secondsLeftRef.current = secondsLeft;
     setSecondsLeft(secondsLeftRef.current);
 
+    function tick() {
+      secondsLeftRef.current--;
+      setSecondsLeft(secondsLeftRef.current);
+    }
+
     const interval = setInterval(() => {
       if (isPausedRef.current) {
         return;
       }
 
-      tick();
-
-      if (secondsLeftRef.current === 0) {
-        console.log("acabou!");
-        clearInterval(interval);
-      }
+      if (secondsLeft > 0)
+        tick();
       
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [secondsLeft]);
 
   const minutes = Math.floor(secondsLeft / 60);
   let seconds = secondsLeft % 60;

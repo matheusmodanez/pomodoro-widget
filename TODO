@@ -1,6 +1,4 @@
---> Arrumar o restart: quando ele está rodando e eu aperto o restart, ele vai pra 25:00 e volta pra contagem em que estava.
---> Adicionar botão de stop!
+--> Add a change background functionality.
+    - On the Settings components, create the function to select the color or image of the background, and then, pass it as a parameter on the Component call in the App.js file.
 
---> Adicionar funcionalidade de cor de fundo
-
---> se conseguir, tirar a task inicial que aparece logo quando a tela carrega
+--> Tasks don`t persist when page is loaded (I`ll have to use a storage... maybe I can use the Notion API to do that)

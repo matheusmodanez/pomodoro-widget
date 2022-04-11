@@ -1,10 +1,12 @@
 import "./index.css";
 import React from "react";
-import Tasks from "./Tasks";
-import Timer from "./Timer";
+import Tasks from "./components/Tasks";
+import Timer from "./components/Timer";
+import Settings from "./components/Settings";
 
 function App() {
-  return <div className="bg-zinc-800 w-1/3 shadow-xl rounded-md">
+  return <div className="bg-zinc-800 w-full h-full shadow-xl rounded-md">
+    {/* <Settings/> */}
     <Timer/>
     <Tasks/>
   </div>;
